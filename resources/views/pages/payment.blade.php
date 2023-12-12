@@ -1,10 +1,10 @@
 <x-payment-layout>
 <div class="w-full ml-10 max-w-md px-8 py-4 mt-16 bg-white rounded-xl shadow-lg border-solid ">
-    <h2 class="mt-2 text-xl font-semibold text-gray-800 md:mt-0 ">{{$data->kode_order}}</h2>
+    <h2 class="mt-2 text-2xl font-semibold text-gray-800 md:mt-0 ">{{$data->kode_order}}</h2>
     <div class="main">
-        <p class="mt-2 text-sm text-gray-600">{{$data->name}}</p>
-        <p class="mt-2 text-sm text-gray-600">{{$data->nohp}}</p>
-        <p class="mt-2 text-sm text-gray-600">Rp {{number_format($data->total_harga, 0, ',', '.')}}</p>
+        <p class="mt-2 text-xl text-gray-600">{{$data->name}}</p>
+        <p class="mt-2 text-lg text-gray-600">0{{$data->nohp}}</p>
+        <p class="mt-2 text-lg text-gray-600">Rp {{number_format($data->total_harga, 0, ',', '.')}}</p>
     </div>
 
     <div class="flex justify-end mt-4">
@@ -15,7 +15,27 @@
         </a>
     </div>
 </div>
-<script type="text/javascript">
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('midtrans.client_key')}}"></script>
+        <script type="text/javascript">
+        document.getElementById('pay-button').onclick = function(){
+            // SnapToken acquired from previous step
+            snap.pay('{{$token}}', {
+            // Optional
+            onSuccess: function(result){
+                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            },
+            // Optional
+            onPending: function(result){
+                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            },
+            // Optional
+            onError: function(result){
+                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            }
+            });
+        };
+    </script>
+{{-- <script type="text/javascript">
     // For example trigger on button clicked, or any time you need
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function() {
@@ -42,5 +62,5 @@
             }
         })
     });
-</script>
+</script> --}}
 </x-payment-layout>

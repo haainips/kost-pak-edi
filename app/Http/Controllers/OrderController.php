@@ -62,12 +62,13 @@ class OrderController extends Controller
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => $find_data->id,
+                'order_id' => $find_data->kode_order,
                 'gross_amount' => $find_data->total_harga,
             ),
             'customer_details' => array(
                 'name' => $find_data->name,
-//                'email' => Auth()->user()->email,
+                'email' => Auth()->user()->email,
+                'masa_sewa' => $find_data->masa_sewa,
                 'phone' => $find_data->nohp,
             ),
         );

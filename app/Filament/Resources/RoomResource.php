@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
@@ -33,6 +34,12 @@ class RoomResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
+                                Select::make('tipe')
+                                ->options([
+                                    '1' => 'Kamar Atas', 
+                                    '2' => 'Kamar Bawah' 
+                                ])
+                                ->columnSpan('full'),
                                 FileUpload::make('gambar')
                                     ->disk('public')
                                     ->required()

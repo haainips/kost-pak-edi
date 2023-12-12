@@ -12,8 +12,8 @@
                     <header class="bg-white dark:bg-white">
                         <div class="lg:flex p-5">
                             <div
-                                class="flex items-center justify-center w-full px-6 py-8 xl:h-[34rem] lg:h-[32rem] lg:w-1/2">
-                                <div class="max-w-xl">
+                                class="flex items-center justify-center mt-10 w-full px-6 py-8 xl:h-[34rem] lg:h-[32rem] lg:w-1/2">
+                                <div class="max-w-2xl border-4 border-black border-opacity-50 rounded-xl border-solid p-[5rem]">
                                     <h2 class="text-3xl font-semibold text-gray-800 dark:text-black lg:text-4xl">Hunian
                                         Orang <span class="text-blue-600 dark:text-blue-400"> Pintar</span></h2>
 
@@ -32,10 +32,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-full h-64 lg:w-1/2 lg:h-auto">
-                                <div class="w-full h-full bg-cover"
-                                    style="background-image: url({{ asset('storage/images/banner-1.jpg') }})">
-                                    <div class="w-full h-full bg-black opacity-25"></div>
+                            <div class="w-full h-[35rem] lg:w-1/2 lg:h-auto">
+                                <div class="w-[35rem] h-[35rem] ml-[rem] bg-cover mb-[10]"
+                                    style="background-image: url({{ asset('storage/images/logo3.jpeg') }})">
+                                    <div class="w-full h-full"></div>
                                 </div>
                             </div>
                         </div>

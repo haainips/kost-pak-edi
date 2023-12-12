@@ -1,9 +1,9 @@
-<nav x-data="{ isOpen: false }" class="fixed top-0 z-40 bg-white w-full backdrop-filter backdrop-blur-lg bg-opacity-40">
+<nav x-data="{ isOpen: false }" class="fixed top-0 z-40 bg-white w-full backdrop-filter bg-opacity-10 border-b-2">
     <div class="container px-6 py-4 mx-auto">
         <div class="lg:flex lg:items-center lg:justify-between">
             <div class="flex items-center justify-between">
 
-                <img src="{{ asset('storage/images/logo.png') }}" alt="" class="w-10 h-10">
+                <img src="{{ asset('storage/images/logo.png') }}" alt="" width="60" height="60" class="pr-2">
                 <a href="#">
                     <h1 class="ms-3 w-auto h-6 sm:h-7 text-xl font-bold" alt="">Kost Pak Edi</h1>
                 </a>

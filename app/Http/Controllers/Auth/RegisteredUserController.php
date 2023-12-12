@@ -44,9 +44,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if($user()->hasRole('admin')) {
-            return redirect()->intended('/admin');
-        }
 
         if ($user()->hasRole('user')) {
             return redirect()->intended('/dashoard');

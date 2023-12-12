@@ -5,26 +5,27 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}"> 
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ route('dashboard') }}">
+                        <img src="{{asset('storage/images/logo.png')}}" width="60" height="60"> 
+                        {{-- <x-application-logo width="40" height="40" class="block h-9 w-auto fill-current text-gray-800" /> --}}
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center text-lg font-bold">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center ">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        Kost Pak Edi
+                        KOST PAK EDI
                     </x-nav-link>
                 </div>
                 <div class="hidden sm:-my-px sm:flex lg:items-center grow  ml-[50rem]" >
                     @if (!route('dashboard'))
                     @else
                     <a href="#room"
-                    class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  ">Kamar</a>
+                    class="px-3 py-2 mx-3 mt-2 text-lg font-medium text-gray-600 hover:text-black transition-colors duration-300 transform rounded-md lg:mt-0  ">Kamar</a>
                     
                     @endif
                     <a href="{{route('home')}}"
-                    class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  ">Pesanan Saya</a>
+                    class="px-3 py-2 mx-3 mt-2 text-lg font-medium text-gray-600 hover:text-black transition-colors duration-300 transform rounded-md lg:mt-0  ">Pesanan Saya</a>
                 </div>
             </div>
 
@@ -33,8 +34,8 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-lg mr-2 leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <div class="mr-2">{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
