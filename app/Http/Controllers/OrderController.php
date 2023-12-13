@@ -40,8 +40,14 @@ class OrderController extends Controller
         $order->akhir_sewa       = $data['mulai_sewa'];
         $order->masa_sewa        = $data['masa_sewa'];
         $order->total_harga      = $data['totalharga'];
-        
+
         $order->save();
+
+        $room = Room::find($data['room_id']);
+        if ($room) {
+            $room->qty - 1;
+            $room->save();
+        }
         Alert::success('Hore!', 'Pesanan Berhasil Dibuat!');
         return redirect()->route('home');
         // return redirect('dashboard')->with(['success' => 'Data berhasil disimpan']);
@@ -79,8 +85,30 @@ class OrderController extends Controller
             'data' => $find_data
         ]);
     }
-    
 
+    public function callback(Request $request)
+    {
+        $serverkey = config('midtrans.server_key');
+        $hashed = hash("sha512", $request->order_id. $request->status_code.$request->gross_amount.$serverkey);
+        if($hashed == $request->signature_key) {
+            if($request->transaction_status == 'capture') {
+                $order = Order::find($request->order_id);
+                $order->update(['status' => 'Paid']);
+
+                $room = Room::find();
+                $newQty = $room->qty - 1;
+
+                $room->update(['qty' => max(0, $newQty)]);
+            }
+        }
+    }
+    
+    private function reduceRoomStock($order) 
+    {
+        foreach ($order->Room as $room) {
+
+        }
+    }
     // public function history()
     // {
     //     $userId = Auth()->user()->id;

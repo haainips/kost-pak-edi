@@ -22,4 +22,7 @@ class Room extends Model
         'harga', 
         'qty'
     ];
+    public function order() {
+        return $this->belongsTo(Order::class);
+    }
 }

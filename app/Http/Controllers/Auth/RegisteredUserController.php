@@ -40,14 +40,9 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'nohp' => $request->nohp,
             'password' => Hash::make($request->password),
         ]);
 
-
-        if ($user()->hasRole('user')) {
-            return redirect()->intended('/dashoard');
-        }
         event(new Registered($user));
         Auth::login($user);
         return redirect(RouteServiceProvider::HOME);

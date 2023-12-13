@@ -35,5 +35,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/', [OrderController::class, 'index']);
     Route::GET('pesanan', [OrderController::class, 'index'])->name('home');
     Route::POST('order/checkout', [OrderController::class, 'store'])->name('store');
+
+    Route::post('/midtrans-callback', [OrderController::class, 'callback']);
 });
 require __DIR__.'/auth.php';

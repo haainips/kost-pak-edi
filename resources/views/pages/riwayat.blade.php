@@ -8,7 +8,8 @@
                         <table class="w-full divide-y divide-gray-200 dark:divide-gray-300 rounded-10">
                             <thead class="bg-gray-100">
                                 <tr>
-                                    <th scope="col" class="pl-2">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900">
                                         No
                                     </th>
                                     <th scope="col"
@@ -31,6 +32,10 @@
                                         </div>
                                     </th>
 
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900">
+                                        Nama
+                                    </th>
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900">
                                         Mulai Sewa
@@ -67,16 +72,24 @@
                             @foreach ($data as $room)
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-300 dark:bg-gray-100">
                                     <tr>
-                                        <td
-                                            class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                            <div class="inline-flex items-center gap-x-3 ">
+                                                <span class="text-gray-900">{{ $room->id }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                             <div class="inline-flex items-center gap-x-3">
-                                                <input type="checkbox"
-                                                    class="text-blue-500 border-gray-400 rounded dark:bg-gray-100">
-
                                                 <span class="text-gray-900">{{ $room->kode_order }}</span>
                                             </div>
                                         </td>
-                                        <td
+
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                            <div class="inline-flex items-center gap-x-3">
+                                                <span class="text-gray-900">{{ $room->name }}</span>
+                                            </div>
+                                        </td>
+                                        {{-- akhir sewa --}}
+                                        {{-- <td
                                             class="px-4 py-4 text-sm text-gray-500 dark:text-gray-900 whitespace-nowrap">
                                             {{ $room->mulai_sewa }}</td>
                                         @if ($room->mulai_sewa == $room->akhir_sewa)
@@ -87,7 +100,12 @@
                                             <td
                                                 class="px-4 py-4 text-sm text-gray-500 dark:text-gray-900 whitespace-nowrap">
                                                 {{ $room->akhir_sewa }}</td>
-                                        @endif
+                                        @endif --}}
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                            <div class="inline-flex items-center gap-x-3">
+                                                <span class="text-gray-900">{{ $room->mulai_sewa }}</span>
+                                            </div>
+                                        </td>
                                         <td
                                             class="px-4 py-4 text-sm text-gray-500 dark:text-gray-900 whitespace-nowrap">
                                             {{ $room->masa_sewa }} Bulan</td>
@@ -136,6 +154,7 @@
                                                     </button>
                                                 </a>
                                             @else
+                                            
                                             @endif
                                         </td>
                                     </tr>

@@ -21,6 +21,7 @@
                                     </label>
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="room_id" value="{{ $data->id }}">
+                                    <input type="hidden" name="quantity" value="1">
                                     <input type="text" name="name" placeholder="Nama Lengkap"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                 </div>
@@ -89,14 +90,14 @@
                             </label>
                             <div class="flex items-center space-x-6">
                                 <div class="flex items-center">
-                                    <input type="text" class="rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" readonly name="totalharga" id="totalharga" value="{{$data->harga}}">
+                                    <input type="text" class="rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:shadow-md" readonly name="totalharga" id="totalharga" value="{{$data->harga}}">
                                 </div>
                             </div>
                         </div>
             
                         <div>
                             <button
-                                type="submit" class="hover:shadow-form rounded-md mt-5 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                type="submit" class="hover:shadow-form rounded-md mt-5 bg-white transition-colors duration-500 transform hover:bg-black py-3 px-8 text-center text-base font-semibold shadow-md text-black hover:text-white outline-none">
                                 Pesan
                             </button>
                         </div>
