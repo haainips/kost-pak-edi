@@ -67,9 +67,17 @@
                                             <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
                                                 <h1 class="text-lg font-bold text-white">IDR {{ $item->harga }}</h1>
                                                 <h2 class="text-white pr-4"> / Bulan</h2>
-                                                <a href=" {{ url('order/' . $item->id) }} "><button
-                                                        class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">Pesan
-                                                        Kamar</button></a>
+                                                    @if ($item->qty == 0)
+                                                        <a>
+                                                            <button disabled class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                                                                Kamar Kosong</button>
+                                                        </a>
+                                                    @else
+                                                        <a href=" {{ url('order/' . $item->id) }} ">
+                                                            <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">Pesan
+                                                            Kamar</button>
+                                                        </a>
+                                                    @endif
                                             </div>
                                             </a>
                                         </div>

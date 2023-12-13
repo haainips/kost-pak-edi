@@ -40,14 +40,9 @@ class OrderController extends Controller
         $order->akhir_sewa       = $data['mulai_sewa'];
         $order->masa_sewa        = $data['masa_sewa'];
         $order->total_harga      = $data['totalharga'];
-
+        
+        
         $order->save();
-
-        $room = Room::find($data['room_id']);
-        if ($room) {
-            $room->qty - 1;
-            $room->save();
-        }
         Alert::success('Hore!', 'Pesanan Berhasil Dibuat!');
         return redirect()->route('home');
         // return redirect('dashboard')->with(['success' => 'Data berhasil disimpan']);
@@ -103,12 +98,6 @@ class OrderController extends Controller
         }
     }
     
-    private function reduceRoomStock($order) 
-    {
-        foreach ($order->Room as $room) {
-
-        }
-    }
     // public function history()
     // {
     //     $userId = Auth()->user()->id;
