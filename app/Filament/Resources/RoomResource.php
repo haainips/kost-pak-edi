@@ -73,7 +73,9 @@ class RoomResource extends Resource
                     ->label('No'),
                 ImageColumn::make('gambar')
                     ->disk('public')
-                    ->label('Gambar'),
+                    ->label('Gambar')
+                    ->height(200)
+                    ->width(200),
                 TextColumn::make('fasilitas')
                     ->label('Fasilitas'),
                 TextColumn::make('harga')

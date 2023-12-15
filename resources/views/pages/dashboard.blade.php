@@ -82,7 +82,6 @@
                                             </a>
                                         </div>
                                     @endforeach
-
                                     {{-- <x-cardroom/>
                                     <x-cardroom/>
                                     <x-cardroom/> --}}

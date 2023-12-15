@@ -6,6 +6,11 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +30,25 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Group::make()
+                    ->schema([
+                        Section::make()
+                            ->schema([
+                                TextInput::make('name')
+                                ->columnSpan('full'),
+                                TextInput::make('email')
+                                    ->required()
+                                    ->columnSpan('full'),
+                                TextInput::make('nohp')
+                                    ->required(),
+                                    Select::make('status')
+                                    ->options([
+                                        'User' => 'User', 
+                                        'Penghuni' => 'Penghuni' 
+                                    ])
+                                    ->label('Status')
+                            ])->columns(2)
+                    ])
             ]);
     }
 

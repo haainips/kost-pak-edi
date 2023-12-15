@@ -27,7 +27,7 @@ class OrderController extends Controller
     {
         $data = $request->all();
         $qty = $request->input('masa_sewa');
-        $kodeOrder = date('Ymd') + $qty + 1;
+        $kodeOrder = date('Ymd') + $qty + 10;
 
 
         $order = new Order();
@@ -52,7 +52,6 @@ class OrderController extends Controller
     {
         $find_data = Order::find($id);
 
-
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
@@ -68,7 +67,6 @@ class OrderController extends Controller
             ),
             'customer_details' => array(
                 'name' => $find_data->name,
-                'email' => Auth()->user()->email,
                 'masa_sewa' => $find_data->masa_sewa,
                 'phone' => $find_data->nohp,
             ),
@@ -79,24 +77,9 @@ class OrderController extends Controller
             'token' => $snapToken,
             'data' => $find_data
         ]);
+
     }
 
-    public function callback(Request $request)
-    {
-        $serverkey = config('midtrans.server_key');
-        $hashed = hash("sha512", $request->order_id. $request->status_code.$request->gross_amount.$serverkey);
-        if($hashed == $request->signature_key) {
-            if($request->transaction_status == 'capture') {
-                $order = Order::find($request->order_id);
-                $order->update(['status' => 'Paid']);
-
-                $room = Room::find();
-                $newQty = $room->qty - 1;
-
-                $room->update(['qty' => max(0, $newQty)]);
-            }
-        }
-    }
     
     // public function history()
     // {

@@ -15,27 +15,31 @@
         </a>
     </div>
 </div>
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('midtrans.client_key')}}"></script>
+{{-- <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('midtrans.client_key')}}"></script>
         <script type="text/javascript">
         document.getElementById('pay-button').onclick = function(){
             // SnapToken acquired from previous step
             snap.pay('{{$token}}', {
             // Optional
             onSuccess: function(result){
-                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                /* You may add your own js here, this is just example */ 
+                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
             },
             // Optional
             onPending: function(result){
-                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                /* You may add your own js here, this is just example */ 
+                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
             },
             // Optional
             onError: function(result){
-                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                /* You may add your own js here, this is just example */ 
+                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
             }
             });
         };
-    </script>
-{{-- <script type="text/javascript">
+    </script> --}}
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('midtrans.client_key')}}"></script>
+<script type="text/javascript">
     // For example trigger on button clicked, or any time you need
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function() {
@@ -43,6 +47,7 @@
         window.snap.pay('{{$token}}', {
             onSuccess: function(result) {
                 /* You may add your own implementation here */
+                window.location.href = '/pesanan'
                 alert("payment success!");
                 console.log(result);
             },
@@ -62,5 +67,5 @@
             }
         })
     });
-</script> --}}
+</script>
 </x-payment-layout>

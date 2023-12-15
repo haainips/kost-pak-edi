@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -28,6 +29,8 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
+                TextInput::make('name')
+                ->required(),
                 Select::make('status')
                     ->options([
                         'Unpaid' => 'Unpaid',
@@ -36,7 +39,7 @@ class OrderResource extends Resource
                     ->native(false),
                 DatePicker::make('mulai_sewa'),
                 TextInput::make('masa_sewa')
-                    ->disabled(),
+                    ->required(),
                 DatePicker::make('akhir_sewa')
             ]);
     }
@@ -81,9 +84,17 @@ class OrderResource extends Resource
                         ->label('Pesanan Dibuat'),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                ->options([
+                    'Unpaid' => 'Unpaid',
+                    'Paid' => 'Paid',
+                ])
+                ->label('Status Pembayaran')
+                ->searchable()
+                ->preload()
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])

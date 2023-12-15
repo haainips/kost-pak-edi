@@ -29,13 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::GET('order/{id}', [OrderController::class, 'create'])->name('order');
-    Route::GET('payment/{id}', [OrderController::class, 'bayar'])->name('order.bayar');
     Route::GET('/dashboard', [Controller::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     
     // Route::get('/', [OrderController::class, 'index']);
-    Route::GET('pesanan', [OrderController::class, 'index'])->name('home');
     Route::POST('order/checkout', [OrderController::class, 'store'])->name('store');
-
+    
+    Route::GET('payment/{id}', [OrderController::class, 'bayar'])->name('order.bayar');
+    Route::GET('pesanan', [OrderController::class, 'index'])->name('home');
     Route::post('/midtrans-callback', [OrderController::class, 'callback']);
 });
 require __DIR__.'/auth.php';
